@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import multer from 'multer';
 
 /* ÁREA DE IMPORTAÇÃO DOS CONTROLLERS */
 import { CreateUserController } from './Controllers/user/CreateUserController';
@@ -7,17 +8,21 @@ import { DetailUserController } from './Controllers/user/DetailUserController';
 import { isAuthenticated } from './middlewares/isAuthenticated';
 import { CreateCategoryController } from './Controllers/category/CreateCategoryController';
 import { ListCategoryController } from './Controllers/category/ListCategoryController';
+import uploadConfig from './config/multer';
+import { CreateProductController } from './Controllers/product/CreateProductController';
 
 const router = Router()
 
-// router.get('/teste', (req: Request, res: Response) => {
-//     return res.json({nome: 'Kaique'})
-// })
+const upload = multer(uploadConfig.upload("./tmp"));
 
 router.post('/user', new CreateUserController().handle)
 router.post('/session', new AuthUserController().handle)
 router.get('/userinfo', isAuthenticated, new DetailUserController().handle)
 router.post('/category', isAuthenticated, new CreateCategoryController().handle)
 router.get('/listcategory', isAuthenticated, new ListCategoryController().handle)
+
+// Rotas para Product //
+
+router.post('/product', isAuthenticated, upload.single('file') ,new CreateProductController().handle);
 
 export{router}

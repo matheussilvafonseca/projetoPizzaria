@@ -16,6 +16,8 @@ import { RemoveOrderController } from './Controllers/order/RemoveOrderController
 import { AddItemController } from './Controllers/order/AddItemController';
 import { SendOrderController } from './Controllers/order/SendOrderController';
 import { RemoveItemController } from './Controllers/order/RemoveItemController';
+import { ListOrderOpenController } from './Controllers/order/ListOrderOpenController';
+import { CloseOrderController } from './Controllers/order/CloseOrderController';
 
 const router = Router()
 
@@ -42,5 +44,7 @@ router.put('/order/send', isAuthenticated, new SendOrderController().handle);
 
 // rota para o que foi pedido do trabalho
 router.delete('/removeitem', isAuthenticated, new RemoveItemController().handle);
+router.get('/listorderopen', isAuthenticated, new ListOrderOpenController().handle);
+router.put('/closeorder', isAuthenticated, new CloseOrderController().handle);
 
 export{router}

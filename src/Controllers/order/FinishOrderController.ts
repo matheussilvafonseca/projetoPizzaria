@@ -3,7 +3,7 @@ import { FinishOrderService } from "../../Services/order/FinishOrderService";
 
 class FinishOrderController{
     async handle(req: Request, res: Response){
-        const id_pedido = req.body.id_pedido;
+        const id_pedido = req.body;
 
         const finishOrderService = new FinishOrderService();
 

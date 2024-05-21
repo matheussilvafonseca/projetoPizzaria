@@ -42,7 +42,7 @@ class FinishOrderService{
         let orders;
         if (order.length > 0) {
   for (orders of order) {
-     conta = conta + (orders.quantidade * Number(orders.produto.preco));
+     conta += (orders.quantidade * Number(orders.produto.preco));
   }
           } else {
             return("Item não encontrado.")

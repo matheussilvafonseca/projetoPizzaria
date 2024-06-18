@@ -10,7 +10,9 @@ import { CreateCategoryController } from './Controllers/category/CreateCategoryC
 import { ListCategoryController } from './Controllers/category/ListCategoryController';
 import uploadConfig from './config/multer';
 import { CreateProductController } from './Controllers/product/CreateProductController';
-import { ListByCategoryController } from './Controllers/product/ListByCategoryController';
+import { ListProductController } from './Controllers/product/ListProductController';
+import { DeleteProductController } from './Controllers/product/DeleteProductController';
+import { EditProductController } from './Controllers/product/EditProductController';
 import { CreateOrderController } from './Controllers/order/CreateOrderController';
 import { RemoveOrderController } from './Controllers/order/RemoveOrderController';
 import { AddItemController } from './Controllers/order/AddItemController';
@@ -34,7 +36,10 @@ router.get('/listcategory', isAuthenticated, new ListCategoryController().handle
 // Rotas para Product //
 
 router.post('/product', isAuthenticated, upload.single('file') ,new CreateProductController().handle);
-router.get('/category/product', isAuthenticated , new ListByCategoryController().handle);
+router.get('/product/list', isAuthenticated , new ListProductController().handle);
+router.delete('/product/delete', isAuthenticated , new DeleteProductController().handle);
+router.put('/product/edit', isAuthenticated , new EditProductController().handle);
+
 
 //rotas para pedido//
 

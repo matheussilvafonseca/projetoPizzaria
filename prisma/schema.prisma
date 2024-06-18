@@ -39,7 +39,7 @@ model Produto {
   nome String
   preco String
   descricao String
-  banner String
+  preco_promocional String
   criado_em DateTime? @default(now())
   atualizado_em DateTime? @default(now())
 

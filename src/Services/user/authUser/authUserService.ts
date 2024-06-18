@@ -17,13 +17,13 @@ class AuthUserService {
         })
 
         if(!user) {
-            throw new Error("Usuário ou senha incorretos!")
+            return("Usuário ou senha incorretos!")
         }
         
         const senhaMatch = await compare(senha, user.senha)
         
         if(!senhaMatch) {
-            throw new Error("Usuário ou senha incorretos!")
+            return("Usuário ou senha incorretos!")
         }
 
         const token = sign (

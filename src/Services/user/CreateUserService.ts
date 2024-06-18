@@ -15,7 +15,7 @@ class CreateUserService {
 
         // Verifica se foi enviado o valor do email
         if(!email) {
-            throw new Error("E-mail não enviado!")
+            return("E-mail não enviado!")
         }
 
         const UserAlreadyExists = await prismaClient.usuario.findFirst({
@@ -25,7 +25,7 @@ class CreateUserService {
         })
 
         if(UserAlreadyExists) {
-            throw new Error("E-mail já cadastrado!")
+            return("E-mail já cadastrado!")
         }
 
         const senhaHash = await hash(senha, 8)

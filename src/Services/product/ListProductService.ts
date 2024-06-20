@@ -11,7 +11,8 @@ class ListProductService{
                 preco_promocional: true,
                 categoria:{
                     select:{
-                        nome: true
+                        nome: true,
+                        id: true
                     }
                 }
             }

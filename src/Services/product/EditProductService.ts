@@ -11,6 +11,8 @@ interface OrderRequest{
 
 class EditProductService{
     async execute({id_produto, nome_produto, preco_produto, descricao_produto, preco_promocional, id_categoria}: OrderRequest){
+
+        
         const produto = await prismaClient.produto.update({
             where:{
                 id: id_produto
@@ -24,7 +26,7 @@ class EditProductService{
             }
         })
 
-        return produto;
+        return console.log(id_produto,nome_produto,preco_produto,descricao_produto,preco_promocional,id_categoria);;
     }
 }
 
